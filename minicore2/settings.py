@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-$u7(za=we$6wsu+8vg^su$xmq6r24bn=-icd6w3uhhnpfv^@6y
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['minicore2.onrender.com', '127.0.0.1', 'localhost']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -124,3 +124,8 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+import dj_database_url
+import os
+
+DATABASES['default'] = dj_database_url.config(default=os.environ.get('DATABASE_URL'))
